@@ -7,6 +7,7 @@ import { AntDesign, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import {COLORS} from '@/constants/COLORS'
 
+
 const options = [
   {
     title: 'Refer & Earn',
@@ -64,6 +65,8 @@ const options = [
 
 export default function MyProfile() {
 
+  const { logout,deliveryBoyDetails,getDeliveryBoyDetails } = userDeliveryAuth()
+
   const [imageUri, setImageUri] = useState();
 
   const openCamera = async () => {
@@ -85,8 +88,6 @@ export default function MyProfile() {
     }
   };
 
-  const { logout } = userDeliveryAuth()
-
   function handleLogout() {
     Alert.alert('Are you sure?', 'Come back soom we will miss you!', [
       {
@@ -96,9 +97,14 @@ export default function MyProfile() {
       },
       { text: 'OK', onPress: () => logout() },
     ]);
+    console.log("this is from before the logout function");
+    // getDeliveryBoyDetails(deliveryBoyDetails.isRegistered=true)
+    console.log(deliveryBoyDetails.isRegistered)
+    console.log("this is from after the logout function");
+    
   }
 
-  const { deliveryBoyDetails } = userDeliveryAuth()
+  
 
 
   return (

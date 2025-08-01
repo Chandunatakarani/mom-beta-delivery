@@ -55,7 +55,7 @@ export const OrderProvider = ({ children }) => {
       });
   
       if (!response) throw new Error("Failed to fetch current order");
-      console.log("this is from ordercontext",response)
+      // console.log("this is from ordercontext",response)
       setCurrentOrder(response || null);
     } catch (err) {
       setError(err.message || "Something went wrong");
@@ -80,15 +80,15 @@ export const OrderProvider = ({ children }) => {
           
         }
       );
-   console.log("this is from ",orderId)
-      console.log("API Response:", response);
+  //  console.log("this is from ",orderId)
+      // console.log("API Response:", response);
       if (!response)
         throw new Error( "Failed to accept order");
 
       const acceptedOrder = orders.find((o) => o._id === orderId);
       setAcceptedOrderDetails(acceptedOrder);
 
-      console.log("navigating to pickup page");
+      // console.log("navigating to pickup page");
       if (onSuccess) onSuccess();
       fetchOrders();
     } catch (err) {

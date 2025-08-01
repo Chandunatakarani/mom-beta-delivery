@@ -46,7 +46,7 @@ const banners = [
     title: "Partner Benifits",
     description: "The Freedom to Work, the Rewards to Grow",
     buttonText: "Schedule Now",
-    link: "/profile/mystorelocation",
+    link: "/profile/CashBalance",
   },
 ];
 
