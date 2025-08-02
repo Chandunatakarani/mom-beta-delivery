@@ -13,9 +13,10 @@ export const DeliveryBoyAuthContext = createContext(null);
 export const DeliveryBoyAuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [status,setStatus]=useState("Loading");
   const [token, setToken] = useState(null);
   const [deliveryBoyDetails, setDeliveryBoyDetails] = useState(null);
-
+  
   const getDeliveryBoyDetails = useCallback(async (authToken) => {
     console.log("this is from context " , deliveryBoyDetails)
     try {
@@ -33,9 +34,11 @@ export const DeliveryBoyAuthProvider = ({ children }) => {
       if (response) {
         setDeliveryBoyDetails(response);       
         setIsLoggedIn(true)
+        setStatus("Success")
       } else {
         router.replace('/Login/login')
         console.error('Failed to fetch delivery boy details:', response);
+        setStatus("Error")
       }
     } catch (error) {
       console.error('Error fetching delivery boy details:', error);
