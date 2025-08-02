@@ -60,14 +60,44 @@ const SignUpScreen = () => {
     }
   }
 
+  const validateAadhaar = (number) => {
+    const aadhaarRegex = /^[2-9]{1}[0-9]{3}\s?[0-9]{4}\s?[0-9]{4}$/;
+    return aadhaarRegex.test(number);
+  };
+
+  const validatePAN = (pan) => {
+  const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+  return panRegex.test(pan.trim().toUpperCase());
+};
+
+
+
+const [errors , setErrors ] = useState ({})
   const handleSignUp = () => {
-    if (!name.trim()) return Alert.alert('Validation Error', 'Name is required');
-    if (!vehicleType.trim()) return Alert.alert('Validation Error', 'Vehicle type is required');
-    if (!aadhaar.trim()) return Alert.alert('Validation Error', 'Aadhaar number is required');
-    if (!pan.trim()) return Alert.alert('Validation Error', 'PAN card number is required');
-    if (!drivingLicense.trim()) return Alert.alert('Validation Error', 'Driving license is required');
- signupUser();
-    router.push('/Tabs/home');
+    const newErrors={};
+    if (!name.trim()) return Alert.alert("invalid", 'Name is required');
+    if (!vehicleType.trim()){
+      newErrors.vehicleType = 'Vehicle type is required';}
+    if (!aadhaar.trim()){ 
+      newErrors.aadhaar= 'Aadhaar number is required';}
+      else if (!validateAadhaar(aadhaar.trim())){
+        newErrors.aadhaar =  "please enter a valid aadhar number"
+      }
+    if (!pan.trim()) {
+      newErrors.pan =  'PAN card number is required';}
+      else if (!validatePAN(pan.trim())){
+        newErrors.pan =  "please enter a valid pan number"
+      }
+    if (!drivingLicense.trim()){
+      newErrors.drivingLicense  =  'Driving license is required'; }
+
+      setErrors(newErrors);
+
+      if( Object.keys(newErrors).length ===0){
+        signupUser();
+        router.push('/Tabs/home');
+      }
+ 
   };
  
 
@@ -93,6 +123,7 @@ const SignUpScreen = () => {
                 value={name}
                 onChangeText={setName}
               />
+              {errors.name && <Text style={styles.errorText}>{errors.name}</Text>}
             </View>
 
             <View style={styles.inputWrapper}>
@@ -103,29 +134,36 @@ const SignUpScreen = () => {
                 value={vehicleType}
                 onChangeText={setVehicleType}
               />
+              {errors.vehicleType && <Text style={styles.errorText}>{errors.vehicleType}</Text>}
+
+ss
             </View>
 
             <View style={styles.inputWrapper}>
               <Text style={styles.label}>Aadhaar Number</Text>
               <TextInput
                 style={styles.input}
-                placeholder="Enter Aadhaar number"
+                placeholder="Enter Aadhar number - eg: 5768 3456 4758"
                 value={aadhaar}
                 onChangeText={setAadhaar}
                 keyboardType="numeric"
                 maxLength={12}
               />
+                 {errors.aadhaar && <Text style={styles.errorText}>{errors.aadhaar}</Text>}
+           
             </View>
 
             <View style={styles.inputWrapper}>
               <Text style={styles.label}>PAN Card Number</Text>
               <TextInput
                 style={styles.input}
-                placeholder="Enter PAN card number"
+                placeholder="Enter PAN card number - eg:AAAPA1234A"
                 value={pan}
                 onChangeText={setPan}
                 maxLength={10}
               />
+              {errors.pan && <Text style={styles.errorText}>{errors.pan}</Text>}
+
             </View>
 
             <View style={styles.inputWrapper}>
@@ -136,6 +174,7 @@ const SignUpScreen = () => {
                 value={drivingLicense}
                 onChangeText={setDrivingLicense}
               />
+              {errors.drivingLicense && <Text style={styles.errorText}>{errors.drivingLicense}</Text>}
             </View>
 
             <Button
@@ -157,6 +196,11 @@ const SignUpScreen = () => {
 export default SignUpScreen;
 
 const styles = StyleSheet.create({
+  errorText:{
+    color:"red",
+    paddingHorizontal: 16,
+    marginTop:10,
+  },
   container: {
     paddingTop: 60,
     paddingBottom: 40,
