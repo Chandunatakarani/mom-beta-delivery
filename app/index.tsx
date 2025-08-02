@@ -25,6 +25,7 @@ export default function Index() {
   useEffect(() => {
     if (deliveryBoyDetails !== null && currentOrder !== undefined) {
       const isRegistered = deliveryBoyDetails?.isRegistered;
+      
       if (!isRegistered) {
         router.replace("/Login/signup");
         return;

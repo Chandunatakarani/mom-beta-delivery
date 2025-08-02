@@ -20,6 +20,7 @@ import {
 } from 'react-native';
 // import { Checkbox } from 'react-native-paper';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import {Checkbox} from 'react-native-paper'
 
 
 const slides = [
@@ -36,7 +37,7 @@ export default function LoginScreen() {
   const flatListRef = useRef(null);
   const router = useRouter();
 
-//   const { loginWithOtp } = userAuth()
+  // const { loginWithOtp } = userAuth()
 const {loginWithOtp} = userDeliveryAuth()
 
   const taglineText = (
@@ -48,8 +49,12 @@ const {loginWithOtp} = userDeliveryAuth()
   const handleSendOtp = async () => {
     if (!/^\d{10}$/.test(input)) {
       Alert.alert('Invalid Phone Number', 'Please enter a valid 10-digit phone number.');
-      return;
+      return;     
     }
+    if(!isChecked){
+        Alert.alert('Terms Not Accepted','You must accept the terms and privacy policy to continue. ')
+        return;
+      }
 
     setLoading(true);
     console.log(input)
@@ -130,8 +135,30 @@ const {loginWithOtp} = userDeliveryAuth()
                 placeholder="Enter phone number"
                 placeholderTextColor="#999"
               />
-            </View>
 
+
+              {/* checkbox */}
+            </View>
+            <View style={styles.checkboxRow}>
+              <View style={styles.checkboxBorder}>
+                <Checkbox
+                  status={isChecked ? 'checked' : 'unchecked'}
+                  onPress={() => setIsChecked(!isChecked)}
+                  color="#007E71"
+                  uncheckedColor="#007E71"
+                />
+              </View>
+              <Text style={styles.checkboxText}>
+                By clicking, I accept the{' '}
+                <Text style={styles.link} onPress={() => router.push('/profile/terms')}>
+                  terms of services
+                </Text>{' '}
+                and{' '}
+                <Text style={styles.link} onPress={() => router.push('/profile/terms')}>
+                  privacy policy
+                </Text>
+              </Text>
+            </View>
             <TouchableOpacity
               style={styles.otpButton}
               onPress={handleSendOtp}
@@ -166,14 +193,14 @@ const {loginWithOtp} = userDeliveryAuth()
             </View> */}
           </View> 
 
-          <View style={styles.signupContainer}>
+          {/* <View style={styles.signupContainer}>
             <Text style={styles.signupText}>
               Don't have an account?{' '}
               <Text style={styles.signupLink} onPress={() => router.push('/Login/signup')}>
                 Sign Up Now!
               </Text>
             </Text>
-          </View>
+          </View> */}
         </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -385,4 +412,20 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textDecorationLine: 'underline',
   },
+   checkboxRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: hp('2%'),
+  },
+  checkboxText: {
+    fontSize: hp('1.6%'),
+    color: '#333',
+    marginLeft: wp('2%'),
+    flex: 1,
+  },
+    checkboxBorder: {
+    borderWidth: 1,
+    borderColor: '#007E71',
+    borderRadius: wp('2%'),
+  }
 });

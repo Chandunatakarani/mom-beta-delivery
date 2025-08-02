@@ -1,3 +1,4 @@
+import userDeliveryAuth from '@/context/authContext';
 import {  MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as Notifications from 'expo-notifications';
@@ -24,6 +25,12 @@ export default function SettingsScreen() {
   const [darkTheme, setDarkTheme] = useState(false);
 
   const hasCheckedPermissions = useRef(false);
+  const{DeleteDeliveryBoy,deliveryBoyDetails,token}=userDeliveryAuth();
+  // console.log(deliveryBoyDetails._id);
+  // console.log(token);
+
+  
+  
 
   useEffect(() => {
     if (!hasCheckedPermissions.current) {
@@ -58,10 +65,23 @@ export default function SettingsScreen() {
   const handleNotificationsToggle = (newValue: boolean) => {
     requestNotificationPermission(newValue);
   };
+  async function  deletefun(){
+       await  DeleteDeliveryBoy(deliveryBoyDetails._id,token)
+   Alert.alert('DeleteAccount', 'You have been deleted  successfully.');
+  }
 
   const handleDelete = async () => {
-    await DeleteAccount();
-    Alert.alert('DeleteAccount', 'You have been deleted  successfully.');
+    // await DeleteAccount();
+    Alert.alert('Deleting Account','Are you sure you want to delete the account',
+      [{
+        text:"Cancel",
+        style:"cancel"
+      },{
+      text:'Ok',
+      onPress:()=>deletefun(),
+      }
+    ]
+    )
   };
 
   const handleBack = () => {

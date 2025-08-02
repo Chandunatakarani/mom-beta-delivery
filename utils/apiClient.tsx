@@ -6,10 +6,10 @@ async function apiClient(path , options){
     const data = await response.json()
     console.log(BACKEND_URL)
     if(response.ok){
-        // console.log(data)
+        console.log(data)
         return data
     }else{
-        // console.log(response)
+        console.log(response)
         return null
     }
 }

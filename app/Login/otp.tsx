@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   Alert,
   FlatList,
@@ -16,23 +16,51 @@ import {
   View,
 } from "react-native";
 import userDeliveryAuth, { DeliveryBoyAuthContext } from "@/context/authContext";
+import { log } from "console";
 
 const slides = [
   require("../../assets/images/1image.png"),
   require("../../assets/images/2image.png"),
   require("../../assets/images/3image.png"),
 ];
-
 export default function OtpScreen() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const inputRefs = useRef<Array<TextInput | null>>([]);
   const flatListRef = useRef<FlatList>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+   const[canResend,setCanResend]=useState(false)
+  const [timer, setTimer] = useState(30);
   const { verifyOtp } = userDeliveryAuth();
   const params = useLocalSearchParams();
   const user = params.deliveryBoy as string;
 
+  const{ resendOtp }= userDeliveryAuth()                               
+
+ useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+    if (timer > 0) {
+      intervalId = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    } else {
+      setCanResend(true);
+    }
+    return () => clearInterval(intervalId);
+  }, [timer]);
+
+  useEffect(() => {
+    const autoScroll = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      flatListRef.current?.scrollToIndex({ index: nextIndex, animated: true });
+      setCurrentIndex(nextIndex);
+    }, 3000);
+    return () => clearInterval(autoScroll);
+  }, [currentIndex]);
+  
+    const newUser = async() =>{
+
+    }
+        
   const handleSubmit = async () => {
     const code = otp.join("");
     if (code.length !== 6) {
@@ -59,6 +87,22 @@ export default function OtpScreen() {
   const handleKeyPress = (e: any, index: number) => {
     if (e.nativeEvent.key === "Backspace" && otp[index] === "") {
       inputRefs.current[index - 1]?.focus();
+    }
+  };
+
+  const handleResendOtp = async () => {  
+    await resendOtp(user)
+    console.log("we are resending the otp");
+    if (canResend) {
+      setOtp(["", "", "", "", "", ""]);
+      setTimer(30);
+      setCanResend(false);
+      try {
+        Alert.alert("OTP Resent", "A new OTP has been sent to your phone");
+      } catch (error) {
+        Alert.alert("Error", "Failed to resend OTP. Please try again.");
+        setCanResend(true);
+      }
     }
   };
 
@@ -104,6 +148,7 @@ export default function OtpScreen() {
             <View style={styles.bottomCard}>
               <Text style={styles.heading}>Almost there!</Text>
               <Text style={styles.subtext}>Enter the secret code</Text>
+             <Text style={styles.subtext} onPress={()=>{router.push('/Login/login')}}>Edit Number</Text>
               <Text style={styles.otpSent}>OTP sent via SMS to {user}</Text>
 
               <View style={styles.otpContainer}>
@@ -120,6 +165,23 @@ export default function OtpScreen() {
                     autoFocus={index === 0}
                   />
                 ))}
+              </View>
+
+                 {/* Resend Otp */}
+              <View style={styles.resendRow}>
+                <Text style={styles.resendText}>
+                  {canResend ? "" : `Wait for ${timer}s to `}
+                </Text>
+                <TouchableOpacity
+                  onPress={handleResendOtp}
+                  disabled={!canResend}
+                >
+                  <Text
+                    style={[styles.resendText, !canResend && { opacity: 0.5 }]}
+                  >
+                    Resend the OTP
+                  </Text>
+                </TouchableOpacity>
               </View>
 
               <TouchableOpacity onPress={handleSubmit} style={styles.verifyButton}>
@@ -236,4 +298,16 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     bottom: -25,
   },
+  resendRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+    gap: 4,
+    flexWrap: "wrap",
+  },
+  resendText: {
+    fontSize: 14,
+    color: "#007AFF",
+  }
 });

@@ -4,11 +4,11 @@ import { Entypo, Feather, FontAwesome5, Fontisto, MaterialCommunityIcons, Materi
 import DeliveryBoyDetails from '@/components/DeliveryBoyDetails'
 import userDeliveryAuth from '@/context/authContext'
 import { router } from 'expo-router'
+import { log } from 'console'
 
 export default function details() {
 
     const { deliveryBoyDetails } = userDeliveryAuth()
-
 
     return (
         <View style={styles.body}>
