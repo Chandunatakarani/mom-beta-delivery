@@ -29,7 +29,7 @@ export default function OrderHistoryScreen() {
         setLoading(false);
         return;
       }
-      console.log("ths is from orderhistory")
+      console.log("ths is from orderhistory");
 
       const response = await apiClient("api/getOrderHistory", {
         method: "GET",
@@ -54,7 +54,6 @@ export default function OrderHistoryScreen() {
             order_id: order._id,
             RTS: order.status === "delivered" ? "delivered" : "On-time RTS",
           };
-          
 
           const section = acc.find((section) => section.title === date);
           if (section) {
@@ -98,7 +97,16 @@ export default function OrderHistoryScreen() {
           style={styles.MaterialIcons}
           onPress={() => router.back()}
         />
-        <Text style={{ fontSize: 20, color: "#00a99d",marginTop:10,marginBottom:10 }}>Order History</Text>
+        <Text
+          style={{
+            fontSize: 20,
+            color: "#00a99d",
+            marginTop: 40,
+            marginBottom: 40,
+          }}
+        >
+          Order History
+        </Text>
       </View>
 
       <SectionList
@@ -114,15 +122,23 @@ export default function OrderHistoryScreen() {
                 <View
                   style={{
                     flexDirection: "row",
-                    justifyContent: "space-between",
+                    justifyContent: "flex-start",
                   }}
                 >
+                  <Ionicons name="time" size={26} style={styles.timeicon} />
+
                   <Text style={styles.time}>{item.Time}</Text>
-                  <Text style={styles.statusBadge}>{item.RTS}</Text>
+                  <Ionicons
+                    name="chevron-forward"
+                    size={23}
+                    style={styles.icon}
+                  />
                 </View>
+
                 <Text style={styles.orderDetails}>Order: {item.order_id}</Text>
                 <View style={styles.CODcontainer}>
                   <Text style={styles.COD}>COD</Text>
+                  <Text style={styles.statusBadge}>{item.RTS}</Text>
                 </View>
               </View>
               <TouchableOpacity
@@ -136,9 +152,7 @@ export default function OrderHistoryScreen() {
                     },
                   })
                 }
-              >
-                <Ionicons name="chevron-forward" size={35} color="#818181" />
-              </TouchableOpacity>
+              ></TouchableOpacity>
             </View>
           </View>
         )}
@@ -156,8 +170,8 @@ const styles = StyleSheet.create({
   MaterialIcons: {
     marginVertical: 0,
     color: "#00a99d",
-    marginTop:10,
-    marginBottom:10,
+    marginTop: 10,
+    marginBottom: 10,
   },
 
   btn: {
@@ -172,39 +186,41 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     marginTop: 10,
     color: "#676767",
-    marginLeft:5,
+    marginLeft: 5,
   },
   dataContainer: {
     paddingLeft: 8,
   },
   timeBox: {
     marginVertical: 10,
-    backgroundColor: "#D5ECE9",
+    // backgroundColor: "#7bc8c2c9",
+    backgroundColor: "#6bcec686",
     padding: 10,
     borderRadius: 12,
     borderWidth: 1,
     borderColor: "#00a99d",
-     marginHorizontal: 10,
+    marginHorizontal: 10,
   },
   time: {
     fontSize: 14,
     color: "black",
-    fontWeight: "200",
+    fontWeight: "600",
+    marginTop: 10,
   },
   statusBadge: {
-    marginLeft: 200,
+    marginLeft: 150,
     backgroundColor: "#fff",
-    borderRadius: 20,
-    padding: 4,
+    borderRadius: 12,
+    padding: 8,
     paddingHorizontal: 8,
-    fontSize: 12,
+    fontSize: 13,
     color: "#00a99d",
-    shadowColor:"#000",
-    shadowOffset:{width:0,height:2},
-    shadowOpacity:0.25,
-    shadowRadius:3.84,
-    elevation:5,
-
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    textAlign: "center",
   },
   orderDetails: {
     fontWeight: "400",
@@ -216,21 +232,34 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 10,
     marginTop: 25,
-    shadowColor:"#000",
-    shadowOffset:{width:0,height:2},
-    shadowOpacity:0.25,
-    shadowRadius:3.84,
-    elevation:5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   COD: {
     fontWeight: "700",
-    width: 50,
+    width: 55,
     height: 35,
-    backgroundColor: "#8C8D8D33",
-    borderRadius: 27,
+    // backgroundColor: "#8C8D8D33",
+    backgroundColor: "#00a99d",
+    borderRadius: 10,
     textAlign: "center",
     // textAlignVertical: "center",
     fontSize: 12,
-    padding:10,
+    padding: 10,
+    color: "#fff",
+  },
+  icon: {
+    color: "#00a99d",
+    marginBottom: 30,
+    marginTop: 5,
+    marginLeft: 172,
+  },
+  timeicon: {
+    marginTop: 8,
+    color: "#069087ff",
+    marginRight: 6,
   },
 });
