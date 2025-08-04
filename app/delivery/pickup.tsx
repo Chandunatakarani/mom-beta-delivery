@@ -24,12 +24,12 @@ export default function Pickup() {
       <Text style={styles.headerTitle}>Nearby store</Text>
 
       <View style={styles.pinContainer}>
-        <Image source={require('../../assets/images/442.png')} style={styles.pinIcon} />
+        <Image source={require('../../assets/images/443.jpeg')} style={styles.pinIcon} />
       </View>
 
       <View style={styles.routeContainer}>
         <View style={styles.imagesRow}>
-          <Image source={require('../../assets/images/443.png')} style={styles.routeImage} />
+          <Image source={require('../../assets/images/443.jpeg')} style={styles.routeImage} />
           <View style={styles.middleColumn}>
             <Text style={styles.reachTime}>Reach by 7:20 PM</Text>
             <View style={styles.dottedLine} />

@@ -102,7 +102,7 @@ const App = () => {
         {/* Profile Section */}
         <View style={styles.profileSection}>
           <Image
-            source={require('../../assets/images/prof.png')}
+            source={require('../../assets/images/prof.jpeg')}
             style={styles.profileImage}
           />
           <View>

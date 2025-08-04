@@ -118,7 +118,7 @@ const [currentLocation, setCurrentLocation] = useState(null);
 
         <View style={styles.pinContainer}>
           <Image
-            source={require('../../assets/images/442.png')}
+            source={require('../../assets/images/443.jpeg')}
             style={styles.pinIcon}
           />
         </View>
@@ -126,14 +126,14 @@ const [currentLocation, setCurrentLocation] = useState(null);
         <View style={styles.routeContainer}>
           <View style={styles.imagesRow}>
             <Image
-              source={require('../../assets/images/443.png')}
+              source={require('../../assets/images/443.jpeg')}
               style={styles.routeImage}
             />
             <View style={styles.middleColumn}>
               <View style={styles.dottedLine} />
             </View>
             <Image
-              source={require('../../assets/images/01.png')}
+              source={require('../../assets/images/01.jpeg')}
               style={styles.routeImage}
             />
           </View>
@@ -148,7 +148,7 @@ const [currentLocation, setCurrentLocation] = useState(null);
         <View style={styles.combinedCard}>
           <View style={styles.pickupTitleRow}>
             <Image
-              source={require('../../assets/images/prof.png')}
+              source={require('../../assets/images/prof.jpeg')}
               style={styles.orderIcon}
             />
             <Text style={styles.pickupTitle}>Deliver to</Text>
