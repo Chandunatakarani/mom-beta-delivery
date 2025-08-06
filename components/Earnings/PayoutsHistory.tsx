@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'rea
 import React from 'react';
 import Svg, { Line } from 'react-native-svg';
 import { router } from 'expo-router';
-import PayoutHistoryScreen from '@/app/Earnings/payouthistory';
+// import PayoutHistoryScreen from '@/app/Earnings/payouthistory';
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 

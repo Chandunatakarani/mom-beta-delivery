@@ -1,6 +1,6 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import path from "path";
+// import path from "path";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   Animated,
@@ -20,7 +20,7 @@ const SPACING = screenWidth * 0.05;
 
 const banners = [
   {
-    image: require("@/assets/images/refer3.png"),
+    image: require("../assets/images/refer3.png"),
     title: "Refer & Earn",
     description:
       "Spread the word, spread the earnings: Refer a friend, boost your income",
@@ -28,21 +28,21 @@ const banners = [
     link: "/profile/referearn",
   },
   {
-    image: require("@/assets/images/cash2.png"),
+    image: require("../assets/images/cash2.png"),
     title: "Cash Balance",
     description: "Instant Access, Seamless Balance",
     buttonText: "Find Now",
     link: "/profile/CashBalance",
   },
   {
-    image: require("@/assets/images/store2.png"),
+    image: require("../assets/images/store2.png"),
     title: "Store",
     description: "The Speed You Want, The Reliability You Need",
     buttonText: "Book Now",
     link: "/profile/mystorelocation",
   },
   {
-    image: require("@/assets/images/patner1.png"),
+    image: require("../assets/images/patner1.png"),
     title: "Partner Benifits",
     description: "The Freedom to Work, the Rewards to Grow",
     buttonText: "Schedule Now",

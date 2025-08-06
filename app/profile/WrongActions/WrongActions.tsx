@@ -1,10 +1,10 @@
-import { COLORS } from "@/constants/COLORS"
+import { COLORS } from "../../../constants/COLORS"
 import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons"
 import React from "react"
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
-import { screenWidht } from '@/constants/ScreenConfig'
-import WrongActionsList from "@/components/WrongActions/WrongActionList"
+import { screenWidht } from '../../../constants/ScreenConfig'
+import WrongActionsList from "../../../components/WrongActions/WrongActionList"
 import { useNavigation } from "@react-navigation/native"
 import { router } from "expo-router"
 

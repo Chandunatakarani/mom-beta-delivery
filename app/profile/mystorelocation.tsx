@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import * as Location from 'expo-location';
-import apiClient from '@/utils/apiClient';
+import apiClient from '../../utils/apiClient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const { width, height } = Dimensions.get('window');

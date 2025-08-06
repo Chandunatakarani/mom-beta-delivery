@@ -17,7 +17,7 @@ const DeliveryBoyProfileScreen = () => {
         const deliveryBoyId = '681a0e53f32e786edf2e4503';
         const fetchOrders = async () => {
             try {
-                const response = await fetch(`https://mom-beta-server1-4afz.onrender.com/api/delivery/${deliveryBoyId}`);
+                const response = await fetch(`http://18.61.201.132:3000/api/delivery/${deliveryBoyId}`);
                 const data = await response.json();
                 console.log(data)
                 if (data.success) {
@@ -37,7 +37,7 @@ const DeliveryBoyProfileScreen = () => {
 
     const handleDelivery = async (orderId) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/${orderId}/status`, {
+            const response = await fetch(`http://18.61.201.132:3000/api/${orderId}/status`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

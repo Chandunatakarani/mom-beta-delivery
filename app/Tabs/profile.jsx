@@ -1,41 +1,41 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, SafeAreaView, Dimensions, Alert } from 'react-native';
-import ProfileItem from '../profile/ProfileItems';
+// import ProfileItem from '../profile/ProfileItems';
 import * as ImagePicker from 'expo-image-picker';
-import userDeliveryAuth from "@/context/authContext";
+import userDeliveryAuth from "../../context/authContext";
 import { AntDesign, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import {COLORS} from '@/constants/COLORS'
+// import {COLORS} from '@/constants/COLORS'
 
 
 const options = [
   {
     title: 'Refer & Earn',
-    icon: <Image source={require('@/assets/images/Profile/RefernEarns.png')} style={{ height: 20, width: 20,}} />,
+    icon: <Image source={require('../../assets/images/Profile/RefernEarns.png')} style={{ height: 20, width: 20,}} />,
     Link:"/profile/referearn"
 
   },
   {
     title: 'Wrong Action',
-    icon: <Image source={require('@/assets/images/Profile/wrongactions.png')} style={{ height: 20, width: 20 }} />,
+    icon: <Image source={require('../../assets/images/Profile/wrongactions.png')} style={{ height: 20, width: 20 }} />,
     Link: '/profile/WrongActions/WrongActions',
 
   },
   {
     title: 'Cash Balance',
-     icon: <Image source={require('@/assets/images/balance1.png')} style={{ height: 20, width: 20,}} />,
+     icon: <Image source={require('../../assets/images/balance1.png')} style={{ height: 20, width: 20,}} />,
     Link: '/profile/CashBalance/'
 
   },
   {
     title: 'Help & Support',
-    icon: <Image source={require('@/assets/images/Profile/healp.png')} style={{ height: 20, width: 20}} />,
+    icon: <Image source={require('../../assets/images/Profile/healp.png')} style={{ height: 20, width: 20}} />,
     Link:'/profile/momhelp'
 
   },
   {
     title: 'Store',
-    icon: <Image source={require('@/assets/images/Profile/store.png')} style={{ height: 20, width: 20,}} />,
+    icon: <Image source={require('../../assets/images/Profile/store.png')} style={{ height: 20, width: 20,}} />,
     Link:'/profile/mystorelocation'
   },
   // {
@@ -45,18 +45,18 @@ const options = [
   // },
   {
     title: 'Terms and Condition',
-     icon: <Image source={require('@/assets/images/Profile/TnC.png')} style={{ height: 20, width: 20,}} />,
+     icon: <Image source={require('../../assets/images/Profile/TnC.png')} style={{ height: 20, width: 20,}} />,
     Link:'/profile/terms'
 
   },
   {
     title: 'Settings',
-    icon: <Image source={require('@/assets/images/Profile/Setting.png')} style={{ height: 20, width: 20,}} />,
+    icon: <Image source={require('../../assets/images/Profile/Setting.png')} style={{ height: 20, width: 20,}} />,
     Link:'/profile/settings'
   },
   {
     title: 'Order History',
-        icon: <Image source={require('@/assets/images/Profile/Orderhistory.png')} style={{ height: 20, width: 20,}} />,
+        icon: <Image source={require('../../assets/images/Profile/Orderhistory.png')} style={{ height: 20, width: 20,}} />,
 
     Link:'/profile/ordershistory'
   },

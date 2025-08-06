@@ -1,6 +1,6 @@
-import LoadingScreen from '@/components/LoadingScreen';
-import { convertDayToName, covertMonthsToNames } from '@/Hooks/earningHooks';
-import useWeekEarnings from '@/Hooks/useWeekEarnings';
+import LoadingScreen from '../../components/LoadingScreen';
+import { convertDayToName, covertMonthsToNames } from '../../Hooks/earningHooks';
+import useWeekEarnings from '../../Hooks/useWeekEarnings';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';

@@ -1,4 +1,4 @@
-import userDeliveryAuth from '@/context/authContext';
+import userDeliveryAuth from '../../context/authContext';
 import {  MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as Notifications from 'expo-notifications';

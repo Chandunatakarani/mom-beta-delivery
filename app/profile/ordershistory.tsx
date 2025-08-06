@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import userDeliveryAuth from "../../context/authContext";
-import apiClient from "@/utils/apiClient";
+import apiClient from "../../utils/apiClient";
 
 export default function OrderHistoryScreen() {
   const [data, setData] = useState([]);

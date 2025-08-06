@@ -10,8 +10,8 @@ import {
   Dimensions, 
 } from 'react-native'; 
 import { useOrders } from '../../context/orderContext';
-import { useLocation } from '@/context/locatonContext';
-import { COLORS } from '@/constants/COLORS';
+import { useLocation } from '../../context/locatonContext';
+import { COLORS } from '../../constants/COLORS';
 
 const screenWidth = Dimensions.get('window').width;
 

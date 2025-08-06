@@ -1,10 +1,10 @@
-import { convertDayToName, covertMonthsToNames } from '@/Hooks/earningHooks';
-import usePayoutWeekly from '@/Hooks/payoutWeekly';
+import { convertDayToName, covertMonthsToNames } from '../../Hooks/earningHooks';
+import usePayoutWeekly from '../../Hooks/payoutWeekly';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView } from 'react-native';
-import PayoutBreakdown from '@/components/Earnings/Payout_Breakdown'
-import Transaction from '@/components/Earnings/TransactionDetails'
+import PayoutBreakdown from '../../components/Earnings/Payout_Breakdown'
+import Transaction from '../../components/Earnings/TransactionDetails'
 
 
 const WeekEarnings = () => {

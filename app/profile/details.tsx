@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Entypo, Feather, FontAwesome5, Fontisto, MaterialCommunityIcons, MaterialIcons, Octicons } from '@expo/vector-icons'
-import DeliveryBoyDetails from '@/components/DeliveryBoyDetails'
-import userDeliveryAuth from '@/context/authContext'
+import DeliveryBoyDetails from '../../components/DeliveryBoyDetails'
+import userDeliveryAuth from '../../context/authContext'
 import { router } from 'expo-router'
 import { log } from 'console'
 

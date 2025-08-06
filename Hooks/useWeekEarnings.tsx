@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import apiClient from "@/utils/apiClient"; // Axios instance
-import userDeliveryAuth from "@/context/authContext";
+import apiClient from "../utils/apiClient"; // Axios instance
+import userDeliveryAuth from "../context/authContext";
 // Optional: get token from secure storage
 
 function useWeekEarnings({ startingDate, endingDate }) {

@@ -1,6 +1,6 @@
 // src/utils/dateUtils.js
 
-import apiClient from "@/utils/apiClient";
+import apiClient from "../utils/apiClient";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 

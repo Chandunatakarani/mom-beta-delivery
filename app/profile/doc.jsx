@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import Help from '@/components/help/Help';
+import Help from '../../components/help/Help';
 
 const DocumentsScreen = ({ navigation }) => {
   return (

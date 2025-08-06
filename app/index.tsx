@@ -1,9 +1,9 @@
 import { Text, View, StyleSheet } from "react-native";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import userDeliveryAuth from "@/context/authContext";
-import LoadingScreen from "@/components/LoadingScreen";
-import { useOrders } from "@/context/orderContext";
+import userDeliveryAuth from "../context/authContext";
+import LoadingScreen from "../components/LoadingScreen";
+import { useOrders } from "../context/orderContext";
 
 export default function Index() {
   const { loading, deliveryBoyDetails, extractToken, getDeliveryBoyDetails } = userDeliveryAuth();

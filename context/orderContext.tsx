@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Alert } from "react-native";
-import apiClient from "@/utils/apiClient";
+import apiClient from "../utils/apiClient";
 import userDeliveryAuth from "./authContext";
 
 const OrderContext = createContext(null);

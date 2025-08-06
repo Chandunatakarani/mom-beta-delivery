@@ -1,8 +1,8 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Stack, router } from 'expo-router'
-import Help from '@/components/help/Help'
-import { COLORS } from '@/constants/COLORS'
+import Help from '../../components/help/Help'
+import { COLORS } from '../../constants/COLORS'
 import { MaterialIcons } from '@expo/vector-icons'
 
 export default function _layout() {

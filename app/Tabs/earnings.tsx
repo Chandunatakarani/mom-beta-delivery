@@ -1,15 +1,15 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import RateCard from '@/components/Earnings/RateCard';
-import EarningsHistory from '@/components/Earnings/EarningsHistory';
-import PayoutHistory from '@/components/Earnings/PayoutsHistory';
+// import RateCard from '@/components/Earnings/RateCard';
+import EarningsHistory from '../../components/Earnings/EarningsHistory';
+import PayoutHistory from '../../components/Earnings/PayoutsHistory';
 
 import { StyleSheet, Text, View, ScrollView, SafeAreaView, Dimensions } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import apiClient from '@/utils/apiClient';
+// import apiClient from '@/utils/apiClient';
 import { ActivityIndicator } from 'react-native-paper';
-import useWeekEarnings from '@/Hooks/useWeekEarnings';
-import LoadingScreen from '@/components/LoadingScreen';
-import { last8Weeks } from '@/Hooks/earningHooks';
+import useWeekEarnings from '../../Hooks/useWeekEarnings';
+import LoadingScreen from '../../components/LoadingScreen';
+// import { last8Weeks } from '@/Hooks/earningHooks';
 // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZWxpdmVyeUJveUlkIjoiNjgzNTU2ZTc2NjA1M2VjYTg5ZTBlZTQwIiwiaWF0IjoxNzQ4NDIyMTkxfQ.lQkEEDttODY8-xL8OI_vao3TMFi2K1j-YeuVwAOKacg"
 const { width } = Dimensions.get('window');
 const paddingHorizontal = width * 0.05;

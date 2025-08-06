@@ -13,7 +13,7 @@ export default function footer() {
             <Text style={{ fontSize: 14, fontWeight: 'bold', textAlign: 'center', marginBottom: 10, color: 'gray' }}>Powered by </Text>
             <View style={{ flexDirection: 'row', padding: 20, marginLeft: 50 }}>
                 <View style={{ flexDirection: 'column', flex: 1,alignItems:'center',justifyContent:'center',marginRight:"20%" }}>
-                    <Image source={require('@/assets/images/mom.png')} style={{ height: 90, width: 100 }} />
+                    <Image source={require('../assets/images/mom.png')} style={{ height: 90, width: 100 }} />
                     <Text>mom pharmacy</Text>
                 </View>
                 

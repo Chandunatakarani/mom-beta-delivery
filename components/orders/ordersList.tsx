@@ -9,6 +9,7 @@ import {
   Alert,
 } from "react-native";
 import { router } from "expo-router";
+import apiClient from "@/utils/apiClient";
 
 const token = "your-token-here";
 
@@ -21,7 +22,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://192.168.1.39:3000/api/allorders", {
+      const res = await apiClient("/api/allorders", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -44,8 +45,8 @@ const Orders = () => {
   const acceptOrder = async (orderId) => {
     setAcceptingOrderId(orderId);
     try {
-      const res = await fetch(
-        `http://192.168.1.39:3000/api/orders/${orderId}/accept`,
+      const res = await apiClient(
+        `/api/orders/${orderId}/accept`,
         {
           method: "POST",
           headers: {

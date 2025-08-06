@@ -1,5 +1,5 @@
-import { COLORS } from "@/constants/COLORS"
-import { screenWidht } from "@/constants/ScreenConfig"
+import { COLORS } from "../../constants/COLORS"
+import { screenWidht } from "../../constants/ScreenConfig"
 import { AntDesign, Ionicons } from "@expo/vector-icons"
 import React from "react"
 import { FlatList, StyleSheet, Text, View } from "react-native"

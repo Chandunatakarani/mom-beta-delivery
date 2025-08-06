@@ -2,8 +2,8 @@ import React from "react";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Tabs } from "expo-router";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
-import { DeliveryBoyAuthProvider } from "@/context/authContext";
-import { COLORS } from "@/constants/COLORS";
+import { DeliveryBoyAuthProvider } from "../../context/authContext";
+import { COLORS } from "../../constants/COLORS";
 export default function _layout() {
   return (
     <DeliveryBoyAuthProvider>

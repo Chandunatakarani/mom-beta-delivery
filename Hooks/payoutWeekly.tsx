@@ -1,7 +1,7 @@
-import userDeliveryAuth from '@/context/authContext';
-import apiClient from '@/utils/apiClient';
+import userDeliveryAuth from '../context/authContext';
+import apiClient from '../utils/apiClient';
 import React, { useEffect, useState } from 'react'
-import { View, Text } from 'react-native'
+// import { View, Text } from 'react-native'
 
 function usePayoutWeekly({startingDate, endingDate}) {
     const [data, setData] = useState(null);

@@ -3,9 +3,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import { createContext, useEffect, useState, useCallback } from "react";
 import { Alert } from "react-native";
-import apiClient from "@/utils/apiClient";
-import { log } from "console";
-import { json } from "stream/consumers";
+import apiClient from "../utils/apiClient";
+// import { log } from "console";
+// import { json } from "stream/consumers";
 
 
 export const DeliveryBoyAuthContext = createContext(null);

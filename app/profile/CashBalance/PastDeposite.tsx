@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import React from 'react'
-import { AntDesign, Ionicons } from '@expo/vector-icons'
-import { COLORS } from '@/constants/COLORS'
+// import { AntDesign, Ionicons } from '@expo/vector-icons'
+import { COLORS } from '../../../constants/COLORS'
 
 
 const data = [

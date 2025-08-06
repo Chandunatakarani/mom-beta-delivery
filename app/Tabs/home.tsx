@@ -15,16 +15,16 @@ import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { router, useLocalSearchParams } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import apiClient from "@/utils/apiClient";
-import userDeliveryAuth from "@/context/authContext";
-import { useLocation } from "@/context/locatonContext";
-import { useEarnings } from "@/Hooks/earningHooks";
-import { useOnlineStatus } from "@/context/deliveryBoyStatusContext";
-import BannerCarousel from "@/components/banner";
-import FooterComponent from "@/components/footer";
+import apiClient from "../../utils/apiClient";
+import userDeliveryAuth from "../../context/authContext";
+// import { useLocation } from "@/context/locatonContext";
+import { useEarnings } from "../../Hooks/earningHooks";
+import { useOnlineStatus } from "../../context/deliveryBoyStatusContext";
+import BannerCarousel from "../../components/banner";
+import FooterComponent from "../../components/footer";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { COLORS } from "@/constants/COLORS";
+import { COLORS } from "../../constants/COLORS";
 
 const { width, height } = Dimensions.get("window");
 

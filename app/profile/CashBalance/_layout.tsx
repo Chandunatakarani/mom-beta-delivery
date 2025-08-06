@@ -3,11 +3,11 @@ import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import CashBalance from './CashBalance';
 import PastDeposite from './PastDeposite';
-import { SafeAreaView } from 'react-native-safe-area-context';
+// import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
-import BackNavigation from '@/components/BackNavigation';
-import Help from '@/components/help/Help';
-import { COLORS } from '@/constants/COLORS';
+import BackNavigation from '../../../components/BackNavigation';
+import Help from '../../../components/help/Help';
+import { COLORS } from '../../../constants/COLORS';
 
 const Tab = createMaterialTopTabNavigator() 
 export default function _layout() {

@@ -13,8 +13,8 @@ import {
 } from 'react-native';
 import { ActivityIndicator, Button } from 'react-native-paper';
 import { router, useRouter } from 'expo-router';
-import userDeliveryAuth from '@/context/authContext';
-import apiClient from '@/utils/apiClient';
+import userDeliveryAuth from '../../context/authContext';
+import apiClient from '../../utils/apiClient';
 
 const SignUpScreen = () => {
   const [name, setName] = useState('');

@@ -15,7 +15,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import userDeliveryAuth, { DeliveryBoyAuthContext } from "@/context/authContext";
+import userDeliveryAuth, { DeliveryBoyAuthContext } from "../../context/authContext";
 import { log } from "console";
 
 const slides = [

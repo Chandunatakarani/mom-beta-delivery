@@ -3,9 +3,9 @@ import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { Svg, Line } from 'react-native-svg';
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import apiClient from '@/utils/apiClient';
-import useWeekEarnings from '@/Hooks/useWeekEarnings';
-import { last8Weeks } from '@/Hooks/earningHooks';
+import apiClient from '../../utils/apiClient';
+import useWeekEarnings from '../../Hooks/useWeekEarnings';
+import { last8Weeks } from '../../Hooks/earningHooks';
 
 const { width } = Dimensions.get('window');
 const {height} = Dimensions.get('window');

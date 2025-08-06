@@ -2,10 +2,10 @@ import React from "react";
 import { Text, View, StyleSheet,  ScrollView, TouchableOpacity } from 'react-native';
 import { Entypo, Ionicons } from '@expo/vector-icons';
 
-import Activity from "@/components/orders/orderActivity";
+import Activity from "../../components/orders/orderActivity";
 import { router, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { navigate } from "expo-router/build/global-state/routing";
+// import { navigate } from "expo-router/build/global-state/routing";
 export default function OrderHistoryScreen() {
 
   

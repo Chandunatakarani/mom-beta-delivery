@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
-import { screenWidht } from '@/constants/ScreenConfig'
-import { COLORS } from '@/constants/COLORS'
+// import { screenWidht } from '@/constants/ScreenConfig'
+// import { COLORS } from '@/constants/COLORS'
 
 export default function CashBalance() {
   return (

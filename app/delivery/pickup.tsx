@@ -3,9 +3,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity, Alert, Linking } from 'react-native';
 import * as Location from 'expo-location';
 import { useFocusEffect } from '@react-navigation/native';
-import userDeliveryAuth from '@/context/authContext';
-import apiClient from '@/utils/apiClient';
-import { useOrders } from '@/context/orderContext';
+import userDeliveryAuth from '../../context/authContext';
+import apiClient from '../../utils/apiClient';
+import { useOrders } from '../../context/orderContext';
 
 export default function Pickup() {
   const PickUpLocation = {
