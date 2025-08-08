@@ -16,15 +16,14 @@ import { useNavigation } from "@react-navigation/native";
 import { router, useLocalSearchParams } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import apiClient from "../../utils/apiClient";
-import userDeliveryAuth from "../../context/authContext";
-// import { useLocation } from "@/context/locatonContext";
-import { useEarnings } from "../../Hooks/earningHooks";
-import { useOnlineStatus } from "../../context/deliveryBoyStatusContext";
-import BannerCarousel from "../../components/banner";
-import FooterComponent from "../../components/footer";
+import userDeliveryAuth from "@/context/authContext";
+import { useLocation } from "@/context/locatonContext";
+import { useEarnings } from "@/Hooks/earningHooks";
+import { useOnlineStatus } from "@/context/deliveryBoyStatusContext";
+import BannerCarousel from "@/components/banner";
+import FooterComponent from "@/components/footer";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { COLORS } from "../../constants/COLORS";
 
 const { width, height } = Dimensions.get("window");
 
@@ -62,7 +61,7 @@ const HomeScreen = () => {
   const updateOnlineStatus = async (status) => {
     const token = await extractToken();
     try {
-      const response = await apiClient(`delivery/loginhours`, {
+      const response = await apiClient("delivery/loginhours", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +79,7 @@ const HomeScreen = () => {
     }
   };
 
-  // const { locationName, refreshLocation, latitude, longitude } = useLocation();
+  const { locationName, refreshLocation, latitude, longitude } = useLocation();
 
   const { getEarnings } = useEarnings();
 
@@ -94,12 +93,12 @@ const HomeScreen = () => {
     greet = "Good Evening,";
   }
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor:COLORS.primary}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#E5F2F1" }}>
       <View style={styles.topnavbar}>
         <Text style={styles.txt}>medicine on minutes</Text>
         <View style={styles.headerSection}>
           <View style={styles.leftSection}>
-            {/* <TouchableOpacity onPress={refreshLocation}>
+            <TouchableOpacity onPress={refreshLocation}>
               <View style={styles.row}>
                 <Image
                   source={require("../../assets/images/location.png")}
@@ -112,7 +111,7 @@ const HomeScreen = () => {
                 >
                   {locationName || "Fetching Location..."}
                 </Text>
-                {
+                {/* {
                   <Text
                     style={{
                       fontSize: 12,
@@ -121,102 +120,75 @@ const HomeScreen = () => {
                     }}
                   >
                     {latitude && longitude
-                      ? `${latitude}, ${longitude}`
+                      ? ${latitude}, ${longitude}
                       : "Loading..."}
                   </Text>
-                }
+                } */}
                 <Entypo
-                  style={{ marginTop: 2, marginLeft: 5 }}
+                  style={{ marginTop: 2, marginLeft: 1 }}
                   name="chevron-down"
                   size={20}
-                  color="white"
+                  color="black"
                 />
               </View>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
+            <View style={styles.momimg}>
+            <TouchableOpacity
+              style={styles.helpButton}
+              onPress={() => router.push("/profile/momhelp")}
+            >
+              <Image
+                source={require("../../assets/images/helpimage.png")}
+                style={styles.helpIcon}
+              />
+            </TouchableOpacity>
+            <Text style={styles.texthelp}>Help</Text>
+          </View>
           </View>
 
-          {/* <TouchableOpacity style={styles.helpButton}>
-            <FontAwes6 name="user-large" size={24} color="black" onPress={() => router.push('./profile/profile')} />
-          </TouchableOpacity> */}
-          {/* <TouchableOpacity
-            style={styles.helpButton}
-            onPress={() => router.push("/profile/momhelp")}
-          >
-            <Text style={{ color: "black" }}>help</Text>
-            <Image
-              source={require("../../assets/images/helpsupport.svg")}
-              style={styles.helpIcon}
-            />
-          </TouchableOpacity> */}
+         
         </View>
       </View>
 
       <ScrollView>
-        <View style={{ backgroundColor: COLORS.primary, padding: 15, height:"auto" ,  display:"flex", flexDirection:"row", justifyContent:"space-between" , alignItems:"center" }}>
-          <View style={{zIndex:10 ,width:"50%",}}>
-            <Text style={styles.greetText}>
+        <View style={styles.topSection}>
+          <Text style={styles.greetText}>
             {greet + " "}
             {deliveryBoyDetails ? deliveryBoyDetails.name : " "}
           </Text>
           <View style={styles.personal}>
             <Text style={styles.personalText}>
-              Stay safe on the road,and
+              Stay safe on the road, and have a great day!
             </Text>
-            <Text style={styles.personalText}>
-               have a great day!
+          </View>
+          <View style={styles.onlineSwitchContainer}>
+            <Text style={styles.onlineInfoText}>
+              Go online on time and earn bonuses!
             </Text>
-            <View style={styles.statItemBanner}>
-              <Text style={styles.statLabelBanner}>your earnings</Text>
-                    <Text style={styles.statValueBanner}>
-                      ₹ {getEarnings ? getEarnings.total_earning : 0}
-                    </Text>
-                    
-                  </View>
-          </View>
-          </View>
-          <View>
-            <Image
-                  source={require("../../assets/images/Home/scooty.png")}
-                  style={{ zIndex:1}}
-                />
-          </View>
-        </View>
-
-        <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", padding: 15 , backgroundColor:COLORS.secondary}}>
-          <View>
-            <View style={{ display: "flex", flexDirection: "row", gap: 10 , marginBottom:"5%"}}>
-              <Text style={{ color: "blacck", fontSize: 16 }}>status:</Text>
+            <View style={styles.statusSwitch}>
               <Text
                 style={[
                   styles.statusText,
-                  { color: isOnline ? "#00A99D" : "gray", fontSize: 18 },
+                  { color: isOnline ? "#00A99D" : "gray" },
                 ]}
               >
                 {isOnline ? "Online" : "Offline"}
               </Text>
+              <Switch
+                trackColor={{ false: "#767577", true: "#00A99D" }}
+                thumbColor="white"
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={toggleSwitch}
+                value={isOnline}
+                style={{ transform: [{ scaleX: 1.4 }, { scaleY: 1.3 }] }}
+              />
             </View>
-            <Text style={styles.onlineInfoText}>
-              Go online on time and earn bonuses!
-            </Text>
-          </View>
-          <View>
-            <Switch
-              trackColor={{ false: "#767577", true: "#00A99D" }}
-              thumbColor="white"
-              ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleSwitch}
-              value={isOnline}
-              style={{ transform: [{ scaleX: 1.4 }, { scaleY: 1.3 }]  }}
-            />
           </View>
         </View>
 
-        <View style={{backgroundColor:COLORS.secondary}}>
-          <BannerCarousel />
-        </View>
+        <BannerCarousel />
 
-        <View style={{backgroundColor:COLORS.secondary}}>
-          <View style={{ margin: "2%" }}>
+        <View style={{ margin: "2%" }}>
           <LinearGradient
             colors={["#00a99d", "#00dccc"]}
             locations={[0.4254, 0.9896]}
@@ -226,6 +198,15 @@ const HomeScreen = () => {
           >
             <View style={styles.sectionTitle}>
               <Text style={styles.sectionTitleText}>My Progress</Text>
+
+              {/* <View style={{ flexDirection: 'row', marginTop: '7%', marginBottom: '2%', gap: 20 }}>
+                <TouchableOpacity style={styles.filterButton}>
+                  <Text style={styles.filterButtonText}>Start</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.filterButton}>
+                  <Text style={styles.filterButtonText}>This week</Text>
+                </TouchableOpacity>
+              </View> */}
 
               <View style={{ margin: 15 }}>
                 <View style={styles.horizontalDivider} />
@@ -249,15 +230,15 @@ const HomeScreen = () => {
                     <Text style={styles.statValue}>
                       {deliveryBoyDetails?.totalOnlineTimeInMs
                         ? (() => {
-                          const totalMinutes = Math.floor(
-                            deliveryBoyDetails.totalOnlineTimeInMs / 60000
-                          );
-                          const hours = Math.floor(totalMinutes / 60);
-                          const minutes = totalMinutes % 60;
-                          return `${hours}:${minutes
-                            .toString()
-                            .padStart(2, "0")}`;
-                        })()
+                            const totalMinutes = Math.floor(
+                              deliveryBoyDetails.totalOnlineTimeInMs / 60000
+                            );
+                            const hours = Math.floor(totalMinutes / 60);
+                            const minutes = totalMinutes % 60;
+                            return `${hours}:${minutes
+                              .toString()
+                              .padStart(2, "0")}`;
+                          })()
                         : "0:00"}
                     </Text>
                     <Text style={styles.statLabel}>Login Time</Text>
@@ -280,11 +261,8 @@ const HomeScreen = () => {
             </View>
           </LinearGradient>
         </View>
-        </View>
 
-        <View style={{backgroundColor:COLORS.secondary}}>
-          <FooterComponent />
-          </View>
+        <FooterComponent />
       </ScrollView>
 
       <Modal
@@ -301,47 +279,35 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   topnavbar: {
-    height: height * 0.10,
+    height: height * 0.13,
     width: width,
-    backgroundColor: COLORS.primary,
+    backgroundColor: "#e5f2f1",
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 5,
+    // marginTop: -10,
   },
   txt: {
-    color: "white",
+    color: "#00a99d",
     fontSize: 24,
     fontWeight: "700",
-    // textAlign: "center",
+    textAlign: "center",
     flex: 1,
-    paddingVertical: 10,
+    padding: 10,
   },
   headerSection: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     // paddingVertical: '4%',
-    // paddingHorizontal: "3%",
+    paddingHorizontal: "3%",
     marginBottom: 2,
   },
   leftSection: {
-    flex: 1,
-    marginRight: 10,
-  },
-  statItemBanner: {
-    flex: 1,
-    marginTop:20,
-    // alignItems: "center",
-  },
-  statValueBanner: {
-    fontSize: 25,
-    fontWeight: "bold",
-    marginBottom: 5,
-    color: "white",
-  },
-  statLabelBanner: {
-    fontSize: 18,
-    // textAlign: "center",
-    color: "white",
+    flex:1,
+    justifyContent:'space-between',
+    // marginRight: 10,
+    // backgroundColor:'pink',
+    flexDirection:'row'
   },
   statItem: {
     flex: 1,
@@ -387,39 +353,36 @@ const styles = StyleSheet.create({
 
   row: {
     flexDirection: "row",
-    // alignItems: "center",
-    alignItems:"flex-start"
+    alignItems: "center",
   },
   locationText: {
-    color: "white",
+    color: "black",
     fontSize: 18,
-    // marginLeft: 10,
+    marginLeft: 10,
     textAlign: "left",
     maxWidth: 180,
-    marginBottom:"10%"
   },
   helpButton: {
-    display: "flex",
-    flexDirection: "row",
-    gap: 4,
-    alignItems: "center",
-
+    marginRight: 10,
+    marginBottom: 20,
+    color: "red",
   },
 
-  // topSection: {
-  //   backgroundColor: "#fff",
-  //   padding: "4%",
-  //   marginBottom: "5%",
-  //   // borderBottomLeftRadius: 20,
-  //   // borderBottomRightRadius: 20
-  //   margin: 15,
-  //   borderRadius: 20,
-  // },
+  topSection: {
+    backgroundColor: "#fff",
+    padding: "4%",
+    marginBottom: "5%",
+    // borderBottomLeftRadius: 20,
+    // borderBottomRightRadius: 20
+    margin: 15,
+    borderRadius: 20,
+  },
   greetText: {
     fontSize: 21,
     fontWeight: "bold",
-    color: "white",
+    color: "Black",
     marginBottom: "4%",
+    textAlign: "center",
   },
 
   personal: {
@@ -427,8 +390,9 @@ const styles = StyleSheet.create({
   },
   personalText: {
     fontSize: 16,
-    color: "white",
+    color: "Black",
     top: -15,
+    textAlign: "center",
   },
   onlineSwitchContainer: {
     flexDirection: "row",
@@ -593,10 +557,15 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
-  // helpIcon: {
-  //   width: 35,
-  //   height: 35,
-  //   color: "white",
-  //   backgroundColor: "black",
-  // },
+  helpIcon: {
+    width: 20,
+    height: 20,
+  },
+  momimg: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  texthelp: {
+    // backgroundColor:'green'
+  },
 });

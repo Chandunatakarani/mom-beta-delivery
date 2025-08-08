@@ -24,7 +24,7 @@ const options = [
   {
     title: 'Cash Balance',
      icon: <Image source={require('../../assets/images/balance1.png')} style={{ height: 20, width: 20,}} />,
-    Link: '/profile/CashBalance/'
+    Link: '/profile/CashBalance/CashBalance'
 
   },
   {

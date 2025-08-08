@@ -22,8 +22,7 @@ const banners = [
   {
     image: require("../assets/images/refer3.png"),
     title: "Refer & Earn",
-    description:
-      "Spread the word, spread the earnings: Refer a friend, boost your income",
+    description:"Spread the word, spread the earnings: Refer a friend, boost your income",
     buttonText: "Book Now",
     link: "/profile/referearn",
   },
@@ -32,7 +31,7 @@ const banners = [
     title: "Cash Balance",
     description: "Instant Access, Seamless Balance",
     buttonText: "Find Now",
-    link: "/profile/CashBalance",
+    link: "/profile/CashBalance/CashBalance",
   },
   {
     image: require("../assets/images/store2.png"),
@@ -46,7 +45,7 @@ const banners = [
     title: "Partner Benifits",
     description: "The Freedom to Work, the Rewards to Grow",
     buttonText: "Schedule Now",
-    link: "/profile/CashBalance",
+    link: "/profile/CommingSoon",
   },
 ];
 
